@@ -5,8 +5,8 @@ const fs = require("fs");
 
 // Create an express application by calling express()
 const app = express();
-// Use port 8080 to connect
-const PORT = 8080;
+// Use port 8080 to connect locally. Use process.env.PORT to listen to the port that Heroku is using
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 // Use express to parse the incoming data to json
@@ -56,11 +56,14 @@ app.post("/api/notes", (req, res) => {
 
 
 // app.delete("/api/notes:id", (req, res) => {
+//     fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
+
+//     })
 
 // });
 
 
 
-app.listen(PORT, function(){
-    console.log("Server is listening on PORT" , PORT);
+app.listen(PORT, () => {
+    console.log("Server is listening on PORT" , ${PORT});
 });
