@@ -12,7 +12,9 @@ const PORT = 8080;
 // Use express to parse the incoming data to json
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public")); // very important to serve your static files (css & js) from the public directory
+// Use express erve your static files so they can be used in html files and routing
+app.use(express.static("public")); 
+app.use(express.static("db")); 
 
 
 // Express routing using get (read) method for HTML routes
@@ -26,7 +28,7 @@ app.get("/notes", (req, res) => {
 
 // Express routing using get (read) method for API routes
 app.get("/api/notes", (req, res) => {
-    fs.readFile(path.join(__dirname + "/db/db.json"),  "utf8", (err, data) => {
+    fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
         if (err) throw err;
         return res.json(JSON.parse(data));
     });
@@ -34,10 +36,30 @@ app.get("/api/notes", (req, res) => {
 
 // Express routing using post (create) method for API routes
 app.post("/api/notes", (req, res) => {
-    fs.writeFile(path.join(__dirname + "/db/db.json"), "utf8", JSON.stringify(data), err => {
+    let newNote = req.body;
+    console.log(newNote)
+
+    fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
+        let noteArray = JSON.parse(data);
+        noteArray.push(newNote);
+        console.log(noteArray);
         if (err) throw err;
-    });
+
+        fs.writeFile(path.join(__dirname + "/db/db.json"), JSON.stringify(noteArray), (err) => {
+            if (err) throw err;
+
+        });
+    })
+    return res.json(null);
 });
+
+
+
+// app.delete("/api/notes:id", (req, res) => {
+
+// });
+
+
 
 app.listen(PORT, function(){
     console.log("Server is listening on PORT" , PORT);
