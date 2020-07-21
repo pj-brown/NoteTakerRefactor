@@ -1,0 +1,1 @@
+INSERT INTO note (title, text) VALUES ("Note title", "Note body"), ("Test Note", "This is only a test")
