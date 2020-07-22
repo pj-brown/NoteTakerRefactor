@@ -1,21 +1,19 @@
 const orm = require("../config/orm.js");
 
 class Note {
-  selectAll() {
-    //3)
-    return orm.selectAll("notes")
+  // Read method
+  getNotes() {
+    return orm.getNotes()
   }
-  // CREATE METHOD
+  // Create method
   // note.create in controller feeds the columns and the req.body name and hungry feeds the values parameter
-  create(columns, values) {
-    return orm.create("notes", columns, values)
+  create(title, body) {
+    return orm.create(title, body)
   }
-  update(objColVals, condition) {
-    return orm.update("notes", objColVals, condition)
-  }
-  // TODO: create a remove method that references orm.delete
-  remove(objColVals, value){
-    return orm.remove("notes,", objColVals, value);
+
+  // Remove method that references orm.remove
+  remove(id){
+    return orm.remove(id);
   }
 };
 
