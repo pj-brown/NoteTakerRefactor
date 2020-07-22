@@ -22,6 +22,6 @@ create(title, body) {
 remove(id) {
   const queryString = `DELETE FROM note WHERE id=?`;
   return this.connection.query(queryString, [id])
-}
+}}
 
 module.exports = new ORM(connection);
