@@ -1,0 +1,25 @@
+{
+  "name": "notetakerrefactor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pj-brown/NoteTakerRefactor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pj-brown/NoteTakerRefactor/issues"
+  },
+  "homepage": "https://github.com/pj-brown/NoteTakerRefactor#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "util": "^0.12.3"
+  }
+}
