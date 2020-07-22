@@ -11,7 +11,7 @@ router.get("/api/notes", (req, res) => {
 
 // Post route to create a note
 router.post("/api/notes", (req, res) => {
-  note.create(req.body.title, reg.body.text)
+  note.create(req.body.title, req.body.text)
     .then(results => res.json(results))
     .catch(err => res.json(err))
 });
